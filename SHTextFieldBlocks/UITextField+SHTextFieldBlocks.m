@@ -20,6 +20,7 @@ SHStaticConstString(SH_blockShouldReturn);
 
 
 @interface SHTextFieldBlocksManager : NSObject
+<UITextFieldDelegate>
 @property(nonatomic,strong) NSMapTable     * mapBlocks;
 
 +(void)setMapTable:(NSMapTable *)theMapTable forTextField:(UITextField *)theTextField;
@@ -151,6 +152,7 @@ SHStaticConstString(SH_blockShouldReturn);
 
 @interface UITextField (Private)
 @property(nonatomic,readonly) NSMapTable * mapBlocks;
+-(void)setBlock:(id)theBlock forKey:(NSString *)theKey;
 @end
 
 
@@ -160,46 +162,36 @@ SHStaticConstString(SH_blockShouldReturn);
 #pragma mark - Setters
 
 -(void)SH_setShouldBeginEditingBlock:(SHTextFieldPredicateBlock)theBlock; {
-  if(theBlock) [self.mapBlocks setObject:theBlock forKey:SH_blockShouldBeginEditing];
-  else         [self.mapBlocks removeObjectForKey:SH_blockShouldBeginEditing];
+  [self setBlock:theBlock forKey:SH_blockShouldBeginEditing];
 }
 
 -(void)SH_setDidBeginEditingBlock:(SHTextFieldBlock)theBlock; {
-  if(theBlock) [self.mapBlocks setObject:theBlock forKey:SH_blockDidBeginEditing];
-  else         [self.mapBlocks removeObjectForKey:SH_blockDidBeginEditing];
+  [self setBlock:theBlock forKey:SH_blockDidBeginEditing];
 
 }
 
 -(void)SH_setShouldEndEditingBlock:(SHTextFieldPredicateBlock)theBlock; {
-  if(theBlock) [self.mapBlocks setObject:theBlock forKey:SH_blockShouldEndEditing];
-  else         [self.mapBlocks removeObjectForKey:SH_blockShouldEndEditing];
+  [self setBlock:theBlock forKey:SH_blockShouldEndEditing];
 
 }
 
 -(void)SH_setDidEndEditingBlock:(SHTextFieldBlock)theBlock; {
-  if(theBlock) [self.mapBlocks setObject:theBlock forKey:SH_blockDidEndEditing];
-  else         [self.mapBlocks removeObjectForKey:SH_blockDidEndEditing];
-
+  [self setBlock:theBlock forKey:SH_blockDidEndEditing];
 }
 
 -(void)SH_setShouldChangeCharactersInRangeWithReplacementStringBlock:(SHTextFieldRangeReplacementBlock)theBlock; {
-  if(theBlock)
-    [self.mapBlocks setObject:theBlock
-                       forKey:SH_blockShouldChangeCharactersInRangeWithReplacementString];
-  else
-    [self.mapBlocks removeObjectForKey:SH_blockShouldChangeCharactersInRangeWithReplacementString];
+  [self setBlock:theBlock
+          forKey:SH_blockShouldChangeCharactersInRangeWithReplacementString];
 
 }
 
 -(void)SH_setShouldClearBlock:(SHTextFieldPredicateBlock)theBlock; {
-  if(theBlock) [self.mapBlocks setObject:theBlock forKey:SH_blockShouldClear];
-  else         [self.mapBlocks removeObjectForKey:SH_blockShouldClear];
+  [self setBlock:theBlock forKey:SH_blockShouldClear];
 
 }
 
 -(void)SH_setShouldReturnBlock:(SHTextFieldPredicateBlock)theBlock; {
-  if(theBlock) [self.mapBlocks setObject:theBlock forKey:SH_blockShouldReturn];
-  else         [self.mapBlocks removeObjectForKey:SH_blockShouldReturn];
+  [self setBlock:theBlock forKey:SH_blockShouldReturn];
 
 }
 
@@ -237,9 +229,15 @@ SHStaticConstString(SH_blockShouldReturn);
 #pragma mark - Private
 
 #pragma mark - Properties
-
+#pragma mark - setters
+-(void)setBlock:(id)theBlock forKey:(NSString *)theKey; {
+  NSParameterAssert(theKey);
+  if(theBlock) [self.mapBlocks setObject:theBlock forKey:theKey];
+  else         [self.mapBlocks removeObjectForKey:theKey];
+}
 #pragma mark - Getter
 -(NSMapTable *)mapBlocks; {
+  self.delegate = [SHTextFieldBlocksManager sharedManager];
   NSMapTable * mapTable = [SHTextFieldBlocksManager mapTableForTextField:self];
   if(mapTable == nil) mapTable = [NSMapTable strongToStrongObjectsMapTable];
   [SHTextFieldBlocksManager setMapTable:mapTable forTextField:self];
