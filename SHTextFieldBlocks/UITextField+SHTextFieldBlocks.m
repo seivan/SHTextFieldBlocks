@@ -36,7 +36,7 @@ SHStaticConstString(SH_blockShouldReturn);
   self = [super init];
   if (self) {
     self.mapBlocks            = [NSMapTable weakToStrongObjectsMapTable];
-    [self SH_memoryDebugger];
+//    [self SH_memoryDebugger];
   }
   
   return self;
@@ -236,11 +236,12 @@ SHStaticConstString(SH_blockShouldReturn);
   if(theBlock) [self.mapBlocks setObject:theBlock forKey:theKey];
   else         [self.mapBlocks removeObjectForKey:theKey];
 }
+
 #pragma mark - Getter
 -(NSMapTable *)mapBlocks; {
-//  self.delegate = [SHTextFieldBlocksManager sharedManager];
+  self.delegate = [SHTextFieldBlocksManager sharedManager];
   NSMapTable * mapTable = [SHTextFieldBlocksManager mapTableForTextField:self];
-  if(mapTable == nil) mapTable = [NSMapTable weakToWeakObjectsMapTable];
+  if(mapTable == nil) mapTable = [NSMapTable strongToStrongObjectsMapTable];
   [SHTextFieldBlocksManager setMapTable:mapTable forTextField:self];
   return mapTable;
   
