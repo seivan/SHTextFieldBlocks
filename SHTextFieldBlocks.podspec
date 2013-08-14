@@ -2,21 +2,20 @@ Pod::Spec.new do |s|
   name           = "SHTextFieldBlocks"
   url            = "https://github.com/seivan/#{name}"
   git_url        = "#{url}.git"
-  version        = "1.1.0"
+  version        = "1.0.0"
   source_files   = "#{name}/**/*.{h,m}"
 
   s.name         = name
   s.version      = version
-  s.summary      = "Prefixed UIControl category with blocks, auto-removed. Swizzle free!"
+  s.summary      = "Prefixed UITextField category replacing delegate calls with blocks. Without libffi and swizzling"
   s.description  = <<-DESC
 
-                    UIControl events with blocks.
+                    UITextField delegate callbacks via blocks.
                     Blocks are hold with a weak reference so you don't have to cleanup when your object is gone.
   
                     * Swizzle and junk free
-                    * No need to clean up after - The control blocks are self maintained.
-                    * Controls are referenced in a map with weak properties
-                    * Auto remove control from outlets and all actions when removing all the blocks
+                    * No need to clean up after - The blocks are self maintained.
+                    * Textfields are referenced in a map with weak properties
                     * Prefixed selectors.
                     * Minimum clutter on top of the public interface.
                     
