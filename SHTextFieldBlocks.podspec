@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
 
   s.name         = name
   s.version      = version
-  s.summary      = "Prefixed UITextField category replacing delegate calls with blocks. Without libffi and swizzling"
+  s.summary      = "Prefixed UITextField category replacing delegate calls with blocks. Without libffi and swizzling."
   s.description  = <<-DESC
 
                     UITextField delegate callbacks via blocks.

@@ -8,7 +8,7 @@
 
 ##Overview
 
-The blocks and events are automatically removed once their control is gone, so it isn't necessary to clean up - Swizzle Free(™)
+Using blocks instead of delegate callbacks for UITextField. The blocks are gone once the textfield is gone - Swizzle Free(™)
 
 ##Installation
 
@@ -76,7 +76,6 @@ NSString * string);
 
 
 ```
-
 
 
 Contact
