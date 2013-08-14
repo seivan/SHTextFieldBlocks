@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		226D40F617BC349600B0C9C1 /* SHFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 226D40F517BC349600B0C9C1 /* SHFirstViewController.m */; };
 		22AC6F4217B075EB00BBE8FB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22AC6F4117B075EB00BBE8FB /* SenTestingKit.framework */; };
 		22AC6F4317B075EB00BBE8FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D3AEAB1742D9B8000AB469 /* UIKit.framework */; };
 		22AC6F4417B075EB00BBE8FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D3AEAD1742D9B8000AB469 /* Foundation.framework */; };
@@ -42,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		007D8B59643445788A77A737 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		226D40F417BC349600B0C9C1 /* SHFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHFirstViewController.h; sourceTree = "<group>"; };
+		226D40F517BC349600B0C9C1 /* SHFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHFirstViewController.m; sourceTree = "<group>"; };
 		22AC6F4017B075EB00BBE8FB /* ExampleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AC6F4117B075EB00BBE8FB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		22AC6F4717B075EC00BBE8FB /* ExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExampleTests-Info.plist"; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 				22D3AEBA1742D9B8000AB469 /* SHAppDelegate.h */,
 				22D3AEBB1742D9B8000AB469 /* SHAppDelegate.m */,
 				22D3AEC31742D9B8000AB469 /* MainStoryboard.storyboard */,
+				226D40F417BC349600B0C9C1 /* SHFirstViewController.h */,
+				226D40F517BC349600B0C9C1 /* SHFirstViewController.m */,
 				22D3AEC61742D9B8000AB469 /* SHViewController.h */,
 				22D3AEC71742D9B8000AB469 /* SHViewController.m */,
 				22D3AEB21742D9B8000AB469 /* Supporting Files */,
@@ -370,6 +375,7 @@
 				22D3AEB81742D9B8000AB469 /* main.m in Sources */,
 				22D3AEBC1742D9B8000AB469 /* SHAppDelegate.m in Sources */,
 				22D3AEC81742D9B8000AB469 /* SHViewController.m in Sources */,
+				226D40F617BC349600B0C9C1 /* SHFirstViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

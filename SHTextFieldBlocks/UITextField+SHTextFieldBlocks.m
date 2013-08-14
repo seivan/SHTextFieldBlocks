@@ -55,11 +55,12 @@ SHStaticConstString(SH_blockShouldReturn);
 
 #pragma mark - Debugger
 -(void)SH_memoryDebugger; {
+  __weak typeof(self) weakSelf = self;
   double delayInSeconds = 2.0;
   dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
   dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-    NSLog(@"MAP %@",self.mapBlocks);
-    [self SH_memoryDebugger];
+    NSLog(@"MAP %@",weakSelf.mapBlocks);
+    [weakSelf SH_memoryDebugger];
   });
 }
 
@@ -237,9 +238,9 @@ SHStaticConstString(SH_blockShouldReturn);
 }
 #pragma mark - Getter
 -(NSMapTable *)mapBlocks; {
-  self.delegate = [SHTextFieldBlocksManager sharedManager];
+//  self.delegate = [SHTextFieldBlocksManager sharedManager];
   NSMapTable * mapTable = [SHTextFieldBlocksManager mapTableForTextField:self];
-  if(mapTable == nil) mapTable = [NSMapTable strongToStrongObjectsMapTable];
+  if(mapTable == nil) mapTable = [NSMapTable weakToWeakObjectsMapTable];
   [SHTextFieldBlocksManager setMapTable:mapTable forTextField:self];
   return mapTable;
   
