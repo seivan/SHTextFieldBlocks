@@ -1,3 +1,6 @@
+Deprecated, please use [RxCocoa](https://github.com/ReactiveX/RxSwift) 
+
+
 #SHTextFieldBlocks
 
 [![CI Status](https://img.shields.io/travis/seivan/SHTextFieldBlocks.svg?style=flat)](https://travis-ci.org/seivan/SHTextFieldBlocks)
